@@ -15,12 +15,12 @@ import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
 
 /**
- * @Author: Xiaour
- * @Description:生产者
- * @Date: 2018/8/9 14:52
+ * 生产者
+ *
+ * @version V1.0
+ * @date 2018-12-06
  */
-
-@Component
+ @Component
 public class Producer {
 
     /**
@@ -30,6 +30,7 @@ public class Producer {
     private String producerGroup;
 
     private DefaultMQProducer producer;
+
     /**
      * NameServer 地址
      */
@@ -38,9 +39,8 @@ public class Producer {
 
     @PostConstruct
     public void defaultMQProducer() {
-
         //生产者的组名
-        producer= new DefaultMQProducer(producerGroup);
+        producer = new DefaultMQProducer(producerGroup);
         //指定NameServer地址，多个地址以 ; 隔开
         producer.setNamesrvAddr(namesrvAddr);
         producer.setVipChannelEnabled(false);
@@ -52,14 +52,14 @@ public class Producer {
         }
     }
 
-    public String send(String topic,String tags,String body) throws InterruptedException, RemotingException, MQClientException, MQBrokerException, UnsupportedEncodingException {
+    public String send(String topic, String tags, String body) throws InterruptedException, RemotingException, MQClientException, MQBrokerException, UnsupportedEncodingException {
         Message message = new Message(topic, tags, body.getBytes(RemotingHelper.DEFAULT_CHARSET));
         StopWatch stop = new StopWatch();
         stop.start();
         SendResult result = producer.send(message);
         System.out.println("发送响应：MsgId:" + result.getMsgId() + "，发送状态:" + result.getSendStatus());
         stop.stop();
-        return "{\"MsgId\":\""+result.getMsgId()+"\"}";
+        return "{\"MsgId\":\"" + result.getMsgId() + "\"}";
     }
 
 }

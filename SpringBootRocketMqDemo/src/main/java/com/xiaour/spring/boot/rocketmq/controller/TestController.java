@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.UnsupportedEncodingException;
 
 /**
- * @Author: Xiaour
- * @Description: 这里是为了测试
- * @Date: 2018/8/9 15:16
+ * 测试
+ *
+ * @version V1.0
+ * @date 2018-12-06
  */
 @RestController
 public class TestController {
@@ -21,9 +22,9 @@ public class TestController {
     private Producer producer;
 
     @RequestMapping("/push")
-    public String pushMsg(String msg){
+    public String pushMsg() {
         try {
-            return producer.send("PushTopic","push",msg);
+            return producer.send("PushTopic", "push", "测试消息");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (RemotingException e) {

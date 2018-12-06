@@ -1,7 +1,7 @@
 apache:
   rocketmq:
     consumer:
-      pushConsumer: XiaourPushConsumer
+      pushConsumer: WangshuaiPushConsumer
     producer:
-      producerGroup: Xiaour
-    namesrvAddr: 192.168.2.5:9876
+      producerGroup: wangshuai
+    namesrvAddr: allonsy.xin:9876
