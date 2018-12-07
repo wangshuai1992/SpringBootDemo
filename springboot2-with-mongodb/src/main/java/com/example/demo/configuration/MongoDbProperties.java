@@ -26,4 +26,12 @@ public class MongoDbProperties {
         return environment.getProperty("mongodb.port", Integer.class);
     }
 
+    public String getUsername() {
+        return environment.getProperty("mongodb.username");
+    }
+
+    public String getPwd() {
+        return environment.getProperty("mongodb.password");
+    }
+
 }

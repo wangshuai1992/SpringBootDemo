@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private MongoTemplate mongoTemplate;
+
     private final String userCollectionName = "users";
 
     @Autowired
